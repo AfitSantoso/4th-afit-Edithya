@@ -1,0 +1,46 @@
+/* Opening uses the existing site's palette and leaves its template intact. */
+body.opening-active { overflow: hidden; }
+.opening[hidden], .opening [hidden] { display: none; }
+.opening { position: fixed; inset: 0; z-index: 10000; overflow-y: auto; display: flex; align-items: center; justify-content: center; padding: 32px 18px; background: var(--color-primary); background-image: radial-gradient(ellipse at top left, var(--color-tertiary-m), transparent 65%), radial-gradient(ellipse at bottom right, var(--color-quinary-m), transparent 75%); }
+.opening-card { position: relative; width: min(100%, 700px); margin: auto; padding: clamp(24px, 5vw, 48px); text-align: center; border: 1px solid var(--color-quinary); border-radius: 28px; background: var(--color-pm); box-shadow: 10px 10px 0 var(--color-tertiary); }
+.opening-eyebrow { font-size: 1rem; letter-spacing: .3rem; }
+.opening-progress { display: flex; justify-content: center; gap: 16px; list-style: none; margin: 20px 0 28px; font-size: 1.1rem; letter-spacing: .05rem; }
+.opening-progress li { border-bottom: 2px solid var(--color-tertiary); padding-bottom: 6px; }
+.opening-progress [aria-current] { border-color: var(--color-secondary); font-weight: bold; }
+.opening-emblem { font-size: 5rem; line-height: 1.2; color: var(--color-secondary); }
+.opening-kicker { font-style: italic; font-size: 1.6rem; margin: 10px 0; }
+.opening h1 { font-family: 'Pacifico', cursive; font-weight: normal; font-size: clamp(2.6rem, 5vw, 4rem); line-height: 1.5; margin: 12px 0 20px; letter-spacing: 0; }
+.opening-step > p { font-size: 1.7rem; letter-spacing: .04rem; }
+.opening-step > .opening-small { font-size: 1.45rem; margin: 18px 0; }
+.opening blockquote { font-size: 2rem; font-style: italic; margin: 24px auto; padding: 12px; border-block: 1px solid var(--color-tertiary); }
+.opening .opening-button { display: inline-block; border: 1px solid var(--color-quinary); border-radius: 40px; background: var(--color-secondary); color: var(--color-primary); padding: 12px 28px; font: inherit; font-size: 1.6rem; letter-spacing: .06rem; cursor: pointer; margin-top: 12px; transition: transform .2s; }
+.opening-button:hover { transform: translateY(-3px); }
+.opening .opening-back { display: block; margin: 16px auto 0; border: 0; background: transparent; color: var(--color-quinary); text-decoration: underline; cursor: pointer; font: inherit; font-size: 1.3rem; }
+.opening .opening-hint { margin-top: 16px; font-size: 1.15rem; }
+.opening-signature { margin-top: 28px; font-style: italic; font-size: 1.3rem; }
+.opening-sparkles { position: fixed; inset: 12px 0 auto; text-align: center; font-size: 2rem; pointer-events: none; color: var(--color-quinary); }
+.opening-sparkles span { margin: 0 50px; }
+.love-game { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 360px; margin: 20px auto; }
+.opening .love-card { position: relative; min-height: 90px; border: 1px solid var(--color-quinary); border-radius: 14px; background: var(--color-tertiary); color: var(--color-quinary); cursor: pointer; font: inherit; font-size: 3rem; transition: transform .2s, background .2s; }
+.love-card .love-card-face { display: none; }
+.love-card.is-open .love-card-face { display: inline; }
+.love-card.is-open .love-card-back { display: none; }
+.opening .love-card.is-open { background: var(--color-primary); transform: translateY(-2px); }
+.opening .love-card.is-matched { background: var(--color-pm); border: 2px solid var(--color-secondary); cursor: default; }
+.opening button:focus-visible, .opening h1:focus { outline: 3px solid var(--color-quinary); outline-offset: 5px; }
+.opening-step { animation: opening-arrive .4s ease both; }
+@keyframes opening-arrive { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 420px) { .opening-progress { gap: 8px; font-size: .95rem; } .opening-card { padding: 22px 16px; } .opening-step > p { font-size: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .opening-step { animation: none; } .opening button { transition: none; } }
+
+/* Full-screen prelude, using the same cream, peach, and red palette. */
+.play-intro[hidden], .play-intro [hidden] { display: none; }
+.play-intro { position: fixed; inset: 0; z-index: 10001; display: grid; place-items: center; background: var(--color-primary); background-image: radial-gradient(ellipse at center, var(--color-pm), var(--color-tertiary-m)); }
+.play-surprise { width: 150px; height: 150px; border-radius: 50%; border: 1px solid var(--color-quinary); background: var(--color-secondary); color: var(--color-primary); box-shadow: 0 0 0 14px var(--color-tertiary-m), 0 0 0 28px var(--color-primary-m); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; font: inherit; font-size: 2rem; cursor: pointer; transition: transform .25s; }
+.play-surprise span:first-child { font-size: 3rem; line-height: 1; margin-left: 5px; }
+.play-surprise:hover { transform: scale(1.05); }
+.play-surprise:focus-visible { outline: 3px solid var(--color-quinary); outline-offset: 10px; }
+.intro-countdown { font-family: 'Pacifico', cursive; font-size: clamp(14rem, 38vw, 34rem); line-height: 1.2; color: var(--color-secondary); text-shadow: 6px 6px 0 var(--color-tertiary); }
+.countdown-tick { animation: countdown-beat 1s ease both; }
+@keyframes countdown-beat { 0% { opacity: 0; transform: scale(.65); } 20%, 65% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(1.12); } }
+@media (prefers-reduced-motion: reduce) { .countdown-tick { animation: none; } .play-surprise { transition: none; } }
